@@ -1,0 +1,42 @@
+@model List<UnitTest_Assignment1.Models.PersonModel>
+
+@{
+    ViewData["Title"] = "Danh sách Người";
+}
+
+<h2>Danh sách Người</h2>
+
+<!-- Button để tạo Person mới -->
+<a href="@Url.Action("Create", "Rookies")" class="btn btn-success">Create New Person</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Tên</th>
+            <th>Giới tính</th>
+            <th>Nơi sinh</th>
+            <th>Hành động</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var person in Model)
+        {
+            <tr>
+                <td>
+                <a href="@Url.Action("Details", "Rookies", new { id = person.Id })">
+                    @person.LastName @person.FirstName
+                </a></td>
+                @* <td>@person.LastName @person.FirstName</td> *@
+                <td>@person.Gender</td>
+                <td>@person.BirthPlace</td>
+                <td>
+                    <!-- Button để xem thông tin Person -->
+                    <a href="@Url.Action("Details", "Rookies", new { id = person.Id })" class="btn btn-primary">View</a>
+                    
+                    <!-- Button để chỉnh sửa Person -->
+                    <a href="@Url.Action("Edit", "Rookies", new { id = person.Id })" class="btn btn-warning">Edit</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

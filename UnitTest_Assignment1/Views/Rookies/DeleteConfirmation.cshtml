@@ -1,0 +1,12 @@
+@{
+    ViewData["Title"] = "Delete Confirmation";
+}
+
+<h2>Person Deleted</h2>
+
+<p>Person @ViewBag.DeletedPersonName was removed from the list successfully!</p>
+
+<!-- Button to redirect back to the Index page -->
+<form action="@Url.Action("Index", "Rookies")" method="get">
+    <button type="submit" class="btn btn-primary">OK</button>
+</form>

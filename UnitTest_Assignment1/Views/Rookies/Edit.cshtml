@@ -1,0 +1,55 @@
+@model UnitTest_Assignment1.Models.PersonModel
+
+@{
+    ViewData["Title"] = "Edit Person";
+}
+
+<h2>Edit Person</h2>
+<form asp-action="Edit" asp-controller="Rookies" method="post">
+        <input type="hidden" asp-for="Id" />
+        <div class="form-group">
+            <label for="FirstName"><strong>First Name</strong></label>
+            <input asp-for="FirstName" type="text" class="form-control" id="FirstName"/>
+            @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            <label for="LastName"><strong>Last Name</strong></label>
+            <input asp-for="LastName" type="text" class="form-control" id="LastName"/>
+            @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            <label for="Gender"><strong>Gender</strong></label>
+            <select asp-for="Gender" asp-items="Html.GetEnumSelectList<UnitTest_Assignment1.Models.Gender>()" class="form-control" id="Gender">
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="DOB"><strong>Date of Birth</strong></label>
+            <input asp-for="DOB" type="date" class="form-control" id="DOB" max="@DateTime.Now.ToString("yyyy-MM-dd")" required/>
+             @Html.ValidationMessageFor(model => model.DOB, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            <label for="PhoneNumber"><strong>Phone Number</strong></label>
+            <input asp-for="PhoneNumber" type="text" class="form-control" id="PhoneNumber"/>
+            @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+        </div>     
+        <div class="form-group">
+            <label for="BirthPlace"><strong>Birth Place</strong></label>
+            <input asp-for="BirthPlace" type="text" class="form-control" id="BirthPlace" name="BirthPlace"/>
+            @Html.ValidationMessageFor(model => model.BirthPlace, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            <label for="IsGraduated"><strong>Is Graduated</strong></label>
+            <input asp-for="IsGraduated" type="checkbox" id="IsGraduated"/><br>
+            <div class="row">
+            <!-- Back button aligned to the left -->
+                <div class="col">
+                    <a href="@Url.Action("Index", "Rookies")" class="btn btn-secondary" style="width: 100%;">Back to Index</a>
+                </div>
+                <!-- Create button aligned to the right -->
+                <div class="col text-right">
+                      <button type="submit" class="btn btn-primary" style="width: 100%;">Save</button>
+                </div>
+            </div>
+        </div>
+       
+    </form>
